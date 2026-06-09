@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오플 재팬 · 고객 인텔리전스 대시보드</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="vendor/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">ople</span>
+      <span class="brand-sub">재팬 · 고객 인텔리전스 &amp; 멀티채널 통합 대시보드</span>
+    </div>
+    <nav class="nav" id="nav">
+      <button class="nav-btn active" data-view="integrated">① 통합 관리</button>
+      <button class="nav-btn" data-view="ownstore">② 자사몰</button>
+      <button class="nav-btn" data-view="marketplace">③ 마켓플레이스</button>
+      <button class="nav-btn" data-view="actions">④ 액션 센터</button>
+    </nav>
+    <div class="topbar-meta" id="topbar-meta"></div>
+  </header>
+
+  <main id="app">
+    <div class="loading">데이터 불러오는 중…</div>
+  </main>
+
+  <footer class="footer">
+    개념증명 데모 · 가상 데이터 · 한국 본사에서 일본 사업을 데이터로 운영하는 시나리오
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
