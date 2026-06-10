@@ -24,6 +24,7 @@ async function boot() {
     renderTopbarMeta(data.meta);
     bindNav();
     render(current);
+    showIntro(data.meta);
   } catch (e) {
     app.innerHTML = `<div class="loading">데이터를 불러오지 못했습니다.<br>
       <b>python3 -m http.server</b> 로 실행했는지 확인해 주세요.<br>
@@ -45,6 +46,30 @@ function bindNav() {
     if (!btn) return;
     document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b === btn));
     render(btn.dataset.view);
+  });
+}
+
+// 인트로 표지 — 대표가 맥락 없이 차트부터 보지 않도록 한 장으로 프레이밍
+function showIntro(meta) {
+  const ov = document.createElement("div");
+  ov.className = "intro-cover";
+  ov.innerHTML = `
+    <div class="intro-card">
+      <div class="intro-badge">개념증명 데모 · 가상 데이터</div>
+      <h1 class="intro-title">오플 재팬 · 고객 인텔리전스 대시보드</h1>
+      <p class="intro-lead">데이터로 일본 사업을 운영하면 매출이 어떻게 움직이는가</p>
+      <div class="intro-points">
+        <div class="ip"><span class="ip-k">무엇인가</span>한국 본사가 일본 사업(자사몰 + 라쿠텐·아마존·큐텐)을 한 화면에서 들여다보는 내부 관리 대시보드 시안</div>
+        <div class="ip"><span class="ip-k">왜 보나</span>건기식은 재구매·정기구독이 매출 엔진. "분석 → 재구매 유도"로 iHerb 이탈을 막는 그림을 보여줍니다</div>
+        <div class="ip"><span class="ip-k">데이터</span>실제 운영 데이터가 아닌 가상 데이터입니다. 화면과 분석 로직으로 컨셉을 설득하는 용도</div>
+      </div>
+      <div class="intro-core">마켓은 신규 획득 채널, 자사몰은 구독·LTV 엔진. 데이터로 운영하면 자사몰 연매출 약 +20% 업사이드.</div>
+      <button class="btn btn-primary intro-go" id="intro-go">대시보드 둘러보기</button>
+    </div>`;
+  document.body.appendChild(ov);
+  document.getElementById("intro-go").addEventListener("click", () => {
+    ov.classList.add("hide");
+    setTimeout(() => { ov.remove(); resizeAll(); }, 220);
   });
 }
 

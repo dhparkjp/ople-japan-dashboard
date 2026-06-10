@@ -44,6 +44,12 @@ html, body {
   font-weight: 800; font-size: 22px; letter-spacing: -0.5px; color: var(--primary);
 }
 .brand-sub { color: var(--muted); font-size: 12.5px; }
+.demo-badge {
+  margin-left: 4px; padding: 3px 10px; border-radius: 999px;
+  background: #fff2d9; color: #9a6a13; border: 1px solid #f3e2c0;
+  font-size: 11px; font-weight: 700; white-space: nowrap;
+}
+@media (max-width: 900px) { .brand-sub, .demo-badge { display: none; } }
 .nav { display: flex; gap: 4px; margin-left: 8px; }
 .nav-btn {
   border: 0; background: transparent; cursor: pointer;
@@ -241,6 +247,40 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
   opacity: 0; pointer-events: none; transition: all 0.22s ease; z-index: 120; max-width: 88vw;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- 인트로 표지 ---------- */
+.intro-cover {
+  position: fixed; inset: 0; z-index: 200;
+  background: radial-gradient(1200px 600px at 50% -10%, #2a3550, #141b2c 60%);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+  animation: fade 0.2s ease;
+}
+.intro-cover.hide { opacity: 0; transition: opacity 0.22s ease; }
+.intro-card {
+  background: #fff; border-radius: 18px; width: min(680px, 96vw);
+  padding: 40px 40px 34px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  animation: pop 0.22s ease;
+}
+.intro-badge {
+  display: inline-block; background: #fff2d9; color: #9a6a13; border: 1px solid #f3e2c0;
+  font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
+}
+.intro-title { font-size: 26px; font-weight: 800; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.5px; }
+.intro-lead { font-size: 15px; color: var(--muted); margin: 0 0 22px; }
+.intro-points { display: flex; flex-direction: column; gap: 12px; }
+.intro-points .ip { font-size: 14px; color: var(--ink-soft); line-height: 1.55; padding-left: 92px; position: relative; }
+.intro-points .ip-k {
+  position: absolute; left: 0; top: 0; width: 80px; color: var(--primary); font-weight: 700; font-size: 13px;
+}
+.intro-core {
+  margin: 22px 0 24px; padding: 14px 16px; border-radius: 10px;
+  background: var(--primary-soft); color: #2b5bb8; font-weight: 700; font-size: 14px; line-height: 1.5;
+}
+.intro-go { font-size: 15px; padding: 12px 24px; width: 100%; justify-content: center; }
+@media (max-width: 560px) {
+  .intro-points .ip { padding-left: 0; }
+  .intro-points .ip-k { position: static; display: block; width: auto; margin-bottom: 2px; }
+}
 
 /* 재구매 표 행 액션 버튼 */
 .tbl .row-act { padding: 3px 9px; }
